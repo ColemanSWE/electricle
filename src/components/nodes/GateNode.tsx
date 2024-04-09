@@ -15,7 +15,7 @@ const gateLogic = {
 };
 
 export const GateNode: React.FC<GateNodeProps> = ({ data }) => {
-  const [inputStates, setInputStates] = useState<boolean[]>([false, false]); // For simplicity
+  const [inputStates, setInputStates] = useState<boolean[]>([false, false]);
 
   const output = gateLogic[data.label]
     ? gateLogic[data.label](inputStates)
@@ -23,7 +23,6 @@ export const GateNode: React.FC<GateNodeProps> = ({ data }) => {
 
   return (
     <div style={{ padding: 10, backgroundColor: "#ddd", borderRadius: 5 }}>
-      {/* Inputs */}
       {data.label !== "NOT" && (
         <Handle type="target" position={Position.Left} />
       )}

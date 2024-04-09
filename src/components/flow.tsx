@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import ReactFlow, {
   addEdge,
   useEdgesState,
@@ -39,10 +39,10 @@ export const Flow: React.FC = () => {
 
   const addGate = useCallback(
     (type: "NOT" | "AND" | "OR") => {
-      const id = `gate-${(Math.random() * 100000).toFixed(0)}`; // Unique ID for each node
+      const id = `gate-${(Math.random() * 100000).toFixed(0)}`;
       const newNode: Node = {
         id,
-        type: "gateNode", // This should match the key in `nodeTypes`
+        type: "gateNode",
         position: {
           x: Math.random() * window.innerWidth * 0.8,
           y: Math.random() * window.innerHeight * 0.8,
@@ -55,8 +55,8 @@ export const Flow: React.FC = () => {
   );
 
   const nodeTypes = {
-    gateNode: GateNode, // Ensure GateNode is defined and imported
-    inputNode: InputNode, // Ensure InputNode is defined and imported
+    gateNode: GateNode,
+    inputNode: InputNode,
   };
 
   return (
