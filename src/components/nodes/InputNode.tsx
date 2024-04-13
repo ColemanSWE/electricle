@@ -1,10 +1,22 @@
-import { Handle, Position, NodeProps } from "reactflow";
+import { Handle, NodeProps, Position } from "reactflow";
 
-// Custom Input Node Component
-export const InputNode: React.FC<NodeProps> = ({ data }) => {
+interface InputNodeData {
+  label: string;
+  value: number;
+  setValue: (value: number) => void;
+}
+
+export const InputNode: React.FC<NodeProps<InputNodeData>> = ({ data }) => {
+  const toggleValue = () => {
+    data.setValue(data.value === 0 ? 1 : 0);
+  };
+
   return (
     <div style={{ padding: 10, backgroundColor: "#bbf", borderRadius: 5 }}>
-      <strong>{data.label}</strong>
+      <div style={{ cursor: "pointer" }}>
+        <strong>{data.label}</strong>: {data.value}
+      </div>
+      <button onClick={toggleValue}>Toggle Value</button>
       <Handle type="source" position={Position.Right} />
     </div>
   );
